@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "password": "password",
+      "address": {
+        "street": "Kulas Light",
+        "suite": "Apt. 556",
+        "city": "Gwenborough",
+        "zipcode": "92998-3874",
+        "geo": {
+          "lat": "-37.3159",
+          "lng": "81.1496"
+        }
+      },
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "company": {
+        "name": "Romaguera-Crona",
+        "catchPhrase": "Multi-layered client-server neural-net",
+        "bs": "harness real-time e-markets"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "password": "password",
+      "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {
+          "lat": "-43.9509",
+          "lng": "-34.4618"
+        }
+      },
+      "phone": "010-692-6593 x09125",
+      "website": "anastasia.net",
+      "company": {
+        "name": "Deckow-Crist",
+        "catchPhrase": "Proactive didactic contingency",
+        "bs": "synergize scalable supply-chains"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "password": "1234",
+      "address": {
+        "street": "Douglas Extension",
+        "suite": "Suite 847",
+        "city": "McKenziehaven",
+        "zipcode": "59590-4157",
+        "geo": {
+          "lat": "-68.6102",
+          "lng": "-47.0653"
+        }
+      }
+    }
+  ],
+  "userFeeds": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 2,
+      "id": 2,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 3,
+      "id": 3,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 2,
+      "id": 5,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 3,
+      "id": 6,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 1,
+      "id": 7,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    },
+    {
+      "userId": 2,
+      "id": 8,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    },
+    {
+      "userId": 3,
+      "id": 9,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    },
+    {
+      "userId": 1,
+      "title": "DOU Події Brett",
+      "url": "https://dou.ua/lenta/events/feed/",
+      "image": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+      "id": 11
+    },
+    {
+      "userId": 3,
+      "title": "DOU Події",
+      "url": "https://dou.ua/lenta/events/feed/",
+      "image": "https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg",
+      "id": 12
+    }
+  ]
+}
