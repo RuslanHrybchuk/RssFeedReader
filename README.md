@@ -7,6 +7,15 @@
   <li>Run 'ng serve' to start angular app</li>
   <li>Run 'npm run server' to start json-server</li>
 </ul>
+You can login using one of those mocked accounts:
+<i>
+username/password
+</i>
+Bret/password</br>
+Antonette/password</br>
+Samantha/1234</br>
+
+
 
 <h3>Notice:</h3>
 This project is using https://cors-anywhere.herokuapp.com/ as a proxy to avoid CORS issues. </br>The proxy server is often overloaded, which results in prolonged request completion times and sometimes errors. </br>This is not a project issue. The proxy url can be changed in src/services/feed.service.ts.
