@@ -7,10 +7,11 @@
   <li>Run 'ng serve' to start angular app</li>
   <li>Run 'npm run server' to start json-server</li>
 </ul>
-You can login using one of those mocked accounts:
+You can login using one of those mocked accounts:</br>
 <i>
 username/password
 </i>
+</br>
 Bret/password</br>
 Antonette/password</br>
 Samantha/1234</br>
