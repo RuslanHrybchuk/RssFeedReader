@@ -1,0 +1,141 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "password": "password",
+      "feeds": [
+        {
+          "title": "Reddit",
+          "url": "https://www.reddit.com/.rss",
+          "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+        },
+        {
+          "title": "NASA",
+          "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+          "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+        },
+        {
+          "title": "DOU.ua",
+          "url": "https://dou.ua/feed/",
+          "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "password": "pass",
+      "feeds": [
+        {
+          "title": "Reddit",
+          "url": "https://www.reddit.com/.rss",
+          "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+        },
+        {
+          "title": "NASA",
+          "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+          "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+        },
+        {
+          "title": "DOU.ua",
+          "url": "https://dou.ua/feed/",
+          "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "password": "1234",
+      "feeds": [
+        {
+          "title": "Reddit",
+          "url": "https://www.reddit.com/.rss",
+          "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+        },
+        {
+          "title": "NASA",
+          "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+          "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+        },
+        {
+          "title": "DOU.ua",
+          "url": "https://dou.ua/feed/",
+          "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+        }
+      ]
+    }
+  ],
+  "userFeeds": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 2,
+      "id": 2,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 3,
+      "id": 3,
+      "title": "DOU.ua",
+      "url": "https://dou.ua/feed/",
+      "image": "https://dev.by/ckeditor_assets/pictures/5048/content_dou-logo.jpg"
+    },
+    {
+      "userId": 1,
+      "id": 4,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 2,
+      "id": 5,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 3,
+      "id": 6,
+      "title": "Reddit",
+      "url": "https://www.reddit.com/.rss",
+      "image": "https://www.slashgear.com/wp-content/uploads/2019/09/reddit_logo_main.jpg"
+    },
+    {
+      "userId": 1,
+      "id": 7,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    },
+    {
+      "userId": 2,
+      "id": 8,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    },
+    {
+      "userId": 3,
+      "id": 9,
+      "title": "NASA",
+      "url": "https://www.nasa.gov/rss/dyn/breaking_news.rss",
+      "image": "https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<div class="loading-screen" *ngIf="showLoginScreen">
+  <div class="login-wrapper">
+    <h1>Login</h1>
+
+    <form (ngSubmit)="submitLogin()" #form="ngForm">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="username (try Samantha)" id="username"
+               [(ngModel)]="username"
+               name="username" required>
+
+        <input type="password" class="form-control" placeholder="password (try 1234)" id="password"
+               [(ngModel)]="password" name="password"
+               required>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+  </div>
+</div>
+
+<div class="main-screen-wrapper" *ngIf="showMainScreen">
+  <header>
+    <div class="logout-button" (click)="logOut()">Logout</div>
+
+    <div class="list-view" *ngIf="view === 'card'">
+      <mat-icon (click)="listView()">list</mat-icon>
+    </div>
+    <div class="card-view" *ngIf="view === 'list'">
+      <mat-icon (click)="cardView()">view_module</mat-icon>
+    </div>
+  </header>
+
+  <div class="main-screen">
+
+    <app-feed-card *ngFor="let feed of feedList" [feedData]="feed"></app-feed-card>
+
+  </div>
+</div>
