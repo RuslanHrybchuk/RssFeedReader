@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-feed-item-card',
@@ -12,5 +12,4 @@ export class FeedItemCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

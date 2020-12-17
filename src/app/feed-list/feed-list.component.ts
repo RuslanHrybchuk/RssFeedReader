@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FeedService} from '../../services/feed.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { FeedService } from '../../services/feed.service';
 
 @Component({
   selector: 'app-feed-list',
   templateUrl: './feed-list.component.html',
   styleUrls: ['./feed-list.component.scss']
 })
+
 export class FeedListComponent implements OnInit {
   @Input() feedData;
 
@@ -16,7 +17,7 @@ export class FeedListComponent implements OnInit {
 
   public async clickClose(event): Promise<any> {
     event.stopPropagation();
-    const result = await this.feedService.deleteFeed(this.feedData.id);
+    await this.feedService.deleteFeed(this.feedData.id);
     this.feedService.onDataChange();
   }
 }

@@ -1,14 +1,15 @@
-import {Component, OnInit, OnDestroy, OnChanges} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Feed} from '../model/feed';
-import {FeedService} from '../../services/feed.service';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Feed } from '../model/feed';
+import { FeedService } from '../../services/feed.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit, OnDestroy, OnChanges {
   newFeed: Feed;
   feed: Feed;
@@ -16,14 +17,14 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
 
   private currentUser;
   private dataUpdateSubscription: Subscription;
+
   public password: string;
   public username: string;
-
   public newFeedTitle: string;
   public newFeedUrl: string;
   public newFeedImg: string;
 
-  public activeScreen = 'login';   // login, addFeed, feeds, feedItems, activeItem
+  public activeScreen = 'login';
 
   public feedItemsList;
   public view = 'card';
@@ -68,6 +69,10 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
 
   public logOut(): void {
     localStorage.removeItem('currentUser');
+    this.reloadWindow();
+  }
+
+  private reloadWindow(): void {
     window.location.reload();
   }
 
@@ -82,7 +87,7 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  private selectFeed(feedUrl): void {
+  public selectFeed(feedUrl): void {
     this.selectedFeedUrl = feedUrl;
     this.getFeedItems();
     this.activeScreen = 'feedItems';
@@ -90,6 +95,10 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
 
   public getBack(): void {
     const views = ['login',  'addFeed', 'feeds', 'feedItems', 'activeItem'];
+
+    if (this.activeScreen === 'addFeed'){
+      this.activeScreen = 'feeds';
+    }
 
     if (this.activeScreen === 'feedItems' || this.activeScreen === 'activeItem') {
       this.activeScreen = views[views.indexOf(views.find(x => x === this.activeScreen)) - 1];
@@ -104,11 +113,11 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
     this.view = 'card';
   }
 
-  public addNewFeed(): void {
+  public async addNewFeed(): Promise<any> {
     this.newFeed = new Feed(this.newFeedTitle, this.newFeedUrl, this.newFeedImg);
     this.activeScreen = 'feeds';
-
-    console.log(this.newFeed);
+    await this.feedService.addNewFeed(this.newFeed, this.currentUser.id);
+    this.reloadWindow();
   }
 
   public openNewFeedForm(): void {
@@ -119,7 +128,7 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
    this.feedService.getFeedItemsList(this.selectedFeedUrl).subscribe((feed: any) => {
       this.feedItemsList = feed;
     }, err => {
-      // get back to feed list
+     this.activeScreen = 'feeds';
      console.log(err);
    });
   }
@@ -133,5 +142,4 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy(): void {
     this.dataUpdateSubscription.unsubscribe();
   }
-
 }

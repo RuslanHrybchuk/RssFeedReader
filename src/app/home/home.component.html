@@ -22,8 +22,8 @@
 
 
 <div class="main-screen-wrapper" *ngIf="activeScreen !== 'login'">
-  <header>
 
+  <header>
     <div class="back-button">
       <mat-icon (click)="getBack()">arrow_back</mat-icon>
     </div>
@@ -38,7 +38,6 @@
     <div class="new-feed" label="Create new feed">
       <mat-icon (click)="openNewFeedForm()">playlist_add</mat-icon>
     </div>
-
 
     <div class="logout-button" (click)="logOut()">Logout</div>
   </header>
@@ -117,8 +116,6 @@
         </form>
       </div>
     </div>
-
   </ng-container>
-
 
 </div>

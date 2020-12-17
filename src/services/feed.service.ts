@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Observable, of, Subject, throwError} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {map, catchError} from 'rxjs/operators';
-import {Feed} from '../app/model/feed';
-import {FeedItems} from '../app/model/feedItems';
+import { Injectable } from '@angular/core';
+import { Observable, Subject, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { Feed } from '../app/model/feed';
+import { FeedItems } from '../app/model/feedItems';
 import Parser from 'rss-parser/dist/rss-parser.js';
 
 
@@ -15,17 +15,23 @@ export class FeedService {
   constructor(private http: HttpClient) {}
 
   private serverUrl = 'http://localhost:3000/';
-  private cors = '';
-  // private cors = 'https://cors-anywhere.herokuapp.com/';
-  // private cors = 'https://yacdn.org/proxy/';
+  private cors = 'https://cors-anywhere.herokuapp.com/';
 
   public dataChangeSubject = new Subject();
 
   feed: Feed[] = [];
-  feedItemList: FeedItems[] = [];
 
   public getFeedList(userId): Promise<any> {
     return this.http.get(`${this.serverUrl}userFeeds?userId=${userId}`).toPromise();
+  }
+
+  public addNewFeed(feed, userId): Promise<any> {
+    return this.http.post(`${this.serverUrl}userFeeds`, {
+      userId,
+      title: feed.title,
+      url: feed.url,
+      image: feed.image
+    }).toPromise();
   }
 
   public getUserArray(): Promise<any> {
