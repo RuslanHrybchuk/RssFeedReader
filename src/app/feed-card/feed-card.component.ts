@@ -14,7 +14,8 @@ export class FeedCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public async clickClose(): Promise<any> {
+  public async clickClose(event): Promise<any> {
+    event.stopPropagation();
     const result = await this.feedService.deleteFeed(this.feedData.id);
     this.feedService.onDataChange();
   }

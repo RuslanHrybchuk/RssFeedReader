@@ -10,18 +10,25 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy, OnChanges {
+  newFeed: Feed;
   feed: Feed;
   feedList: Feed[] = [];
 
   private currentUser;
   private dataUpdateSubscription: Subscription;
-
   public password: string;
   public username: string;
-  public showLoginScreen = true;
-  public showMainScreen = false;
+
+  public newFeedTitle: string;
+  public newFeedUrl: string;
+  public newFeedImg: string;
+
+  public activeScreen = 'login';   // login, addFeed, feeds, feedItems, activeItem
+
+  public feedItemsList;
   public view = 'card';
-  public currentFeed: string;
+  public selectedFeedUrl: string;
+  public selectedFeedItem;
 
   constructor(private http: HttpClient,
               private feedService: FeedService) {
@@ -45,7 +52,21 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
     this.feed = new Feed();
   }
 
-  private logOut(): void {
+  public async userAuth(): Promise<any> {
+    const usersArray = await this.feedService.getUserArray();
+    const user = usersArray.find(x => x.username === this.username && x.password === this.password);
+
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      this.currentUser = user;
+      this.getFeedList();
+      this.activeScreen = 'feeds';
+    } else {
+      alert('Username and/or password is incorrect');
+    }
+  }
+
+  public logOut(): void {
     localStorage.removeItem('currentUser');
     window.location.reload();
   }
@@ -53,42 +74,61 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
   private checkIfLogged(): void {
     if (localStorage.getItem('currentUser')) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.showLoginScreen = false;
-      this.showMainScreen = true;
+      this.activeScreen = 'feeds';
 
       this.getFeedList();
     } else {
-      this.showLoginScreen = true;
-      this.showMainScreen = false;
+      this.activeScreen = 'login';
+    }
+  }
+
+  private selectFeed(feedUrl): void {
+    this.selectedFeedUrl = feedUrl;
+    this.getFeedItems();
+    this.activeScreen = 'feedItems';
+  }
+
+  public getBack(): void {
+    const views = ['login',  'addFeed', 'feeds', 'feedItems', 'activeItem'];
+
+    if (this.activeScreen === 'feedItems' || this.activeScreen === 'activeItem') {
+      this.activeScreen = views[views.indexOf(views.find(x => x === this.activeScreen)) - 1];
     }
   }
 
   public listView(): void {
     this.view = 'list';
-
-    // change flex flow and change to list component instead of card
   }
 
   public cardView(): void {
     this.view = 'card';
   }
 
-  public async submitLogin(): Promise<any> {
-    const usersArray = await this.feedService.getUserArray();
+  public addNewFeed(): void {
+    this.newFeed = new Feed(this.newFeedTitle, this.newFeedUrl, this.newFeedImg);
+    this.activeScreen = 'feeds';
 
-    const user = usersArray.find(x => x.username === this.username && x.password === this.password);
-
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.getFeedList();
-
-      this.showLoginScreen = false;
-      this.showMainScreen = true;
-    } else {
-      alert('Username and/or password is incorrect');
-    }
+    console.log(this.newFeed);
   }
+
+  public openNewFeedForm(): void {
+    this.activeScreen = 'addFeed';
+  }
+
+  public getFeedItems(): void {
+   this.feedService.getFeedItemsList(this.selectedFeedUrl).subscribe((feed: any) => {
+      this.feedItemsList = feed;
+    }, err => {
+      // get back to feed list
+     console.log(err);
+   });
+  }
+
+  public selectFeedItem(item): void {
+    this.selectedFeedItem = item;
+    this.activeScreen = 'activeItem';
+  }
+
 
   ngOnDestroy(): void {
     this.dataUpdateSubscription.unsubscribe();

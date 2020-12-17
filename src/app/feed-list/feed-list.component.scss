@@ -1,0 +1,62 @@
+.feedCard-wrapper {
+  min-width: 900px;
+  height: 100px;
+  border-radius: 5px;
+  box-shadow: inset 0 3px 9px rgba(45, 45, 45, 0.98), 0 0 7px 3px rgba(40, 40, 40, 0.98);
+  background: rgba(60, 60, 60, 0.6);
+  display: flex;
+  flex-flow: row;
+  align-content: baseline;
+  justify-content: space-between;
+  font-family: 'Lato', sans-serif;
+  align-items: center;
+  margin: 10px 0 20px 15px;
+
+  .list-image {
+    position: relative;
+    left: 0px;
+    width: 200px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+  }
+
+  &:hover {
+    box-shadow: inset 0 2px 9px rgba(55, 55, 55, 0.90), 0 0 9px 4px rgba(33, 33, 33, 0.98);
+    cursor: pointer;
+  }
+
+  .close-button {
+    position: relative;
+    top: -30px;
+    right: 10px;
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    border-radius: 1.2rem;
+    background: #B00000;
+
+    &:hover {
+      background: #D00000;
+    }
+
+    mat-icon {
+      font-size: 1.2rem;
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+  }
+
+  .title {
+    margin: 15px 10px 5px;
+    transform: translate(-70px);
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #ECECEC;
+    text-shadow: #ff0000 0 0 5px, #B00000 3px 0 3px, #B00000 -3px 0 3px, #B00000 0 3px 5px, #B00000 0 -3px 5px, #333 10px 0 10px, #333 -10px 0 10px, #333 0 10px 10px, #333 0 -10px 10px;
+  }
+}

@@ -1,8 +1,9 @@
-<div class="loading-screen" *ngIf="showLoginScreen">
+<!-- Login Screen -->
+<div class="login-screen" *ngIf="activeScreen === 'login'">
   <div class="login-wrapper">
     <h1>Login</h1>
 
-    <form (ngSubmit)="submitLogin()" #form="ngForm">
+    <form (ngSubmit)="userAuth()">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="username (try Samantha)" id="username"
                [(ngModel)]="username"
@@ -17,10 +18,15 @@
 
   </div>
 </div>
+<!-- end of Login Screen -->
 
-<div class="main-screen-wrapper" *ngIf="showMainScreen">
+
+<div class="main-screen-wrapper" *ngIf="activeScreen !== 'login'">
   <header>
-    <div class="logout-button" (click)="logOut()">Logout</div>
+
+    <div class="back-button">
+      <mat-icon (click)="getBack()">arrow_back</mat-icon>
+    </div>
 
     <div class="list-view" *ngIf="view === 'card'">
       <mat-icon (click)="listView()">list</mat-icon>
@@ -28,11 +34,91 @@
     <div class="card-view" *ngIf="view === 'list'">
       <mat-icon (click)="cardView()">view_module</mat-icon>
     </div>
+
+    <div class="new-feed" label="Create new feed">
+      <mat-icon (click)="openNewFeedForm()">playlist_add</mat-icon>
+    </div>
+
+
+    <div class="logout-button" (click)="logOut()">Logout</div>
   </header>
 
-  <div class="main-screen">
+  <!-- Feed List Screen -->
+  <ng-container *ngIf="activeScreen === 'feeds'">
+    <div class="main-screen main-screen-card-view" *ngIf="view === 'card'">
+      <app-feed-card *ngFor="let feed of feedList" [feedData]="feed" (click)="selectFeed(feed.url)"></app-feed-card>
+    </div>
 
-    <app-feed-card *ngFor="let feed of feedList" [feedData]="feed"></app-feed-card>
+    <div class="main-screen main-screen-list-view" *ngIf="view === 'list'">
+      <app-feed-list *ngFor="let feed of feedList" [feedData]="feed" (click)="selectFeed(feed.url)"></app-feed-list>
+    </div>
+  </ng-container>
+  <!-- end of Feed List Screen -->
 
-  </div>
+
+  <!-- Feed Items Screen -->
+  <ng-container *ngIf="activeScreen === 'feedItems'">
+    <div class="main-screen main-screen-card-view" *ngIf="view === 'card'">
+      <app-feed-item-card *ngFor="let feedItem of feedItemsList" [feedItemData]="feedItem"
+                          (click)="selectFeedItem(feedItem)">
+      </app-feed-item-card>
+    </div>
+
+    <div class="main-screen main-screen-list-view" *ngIf="view === 'list'">
+      <app-feed-item-list *ngFor="let feedItem of feedItemsList" [feedItemData]="feedItem"
+                          (click)="selectFeedItem(feedItem)">
+      </app-feed-item-list>
+    </div>
+  </ng-container>
+  <!-- end of Feed Items Screen -->
+
+
+  <!-- Active Item Screen -->
+  <ng-container *ngIf="activeScreen === 'activeItem'">
+    <div class="main-screen">
+      <div class="active-item" [style.backgroundImage]="'url('+selectedFeedItem.thumbnail+')'">
+        <div class="content-wrapper">
+
+          <div class="title">{{ selectedFeedItem.title }}</div>
+
+          <div class="content">
+            <p [innerHTML]="selectedFeedItem.content | safeHtmlPipe"></p>
+          </div>
+
+          <div class="bottom-info">
+            <p class="author">{{ selectedFeedItem.author }}</p>
+            <p class="date">{{ selectedFeedItem.pubDate | date:'dd-MM-yyyy'}}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- end of Active Item Screen -->
+
+  <ng-container *ngIf="activeScreen === 'addFeed'">
+    <div class="main-screen">
+
+      <div class="add-feed-wrapper">
+        <h1>Add Feed</h1>
+
+        <form ngNativeValidate (ngSubmit)="addNewFeed()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Feed name" id="feedName"
+                   [(ngModel)]="newFeedTitle" name="feedName" required>
+
+            <input type="url" class="form-control" placeholder="Feed url" id="feedUrl"
+                   [(ngModel)]="newFeedUrl" name="feedUrl" required>
+
+            <input type="url" class="form-control" placeholder="Paste image url here" id="feedImage"
+                   [(ngModel)]="newFeedImg" name="feedImage">
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  </ng-container>
+
+
 </div>

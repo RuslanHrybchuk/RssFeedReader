@@ -1,1 +1,9 @@
-<p>feed-list works!</p>
+<div class="feedCard-wrapper">
+  <div class="list-image" [style.backgroundImage]="'url('+feedData.image+')'"></div>
+
+  <p class="title">{{ feedData.title }}</p>
+
+  <div class="close-button"><mat-icon style = "color:#ECECEC" (click)="clickClose($event)">close</mat-icon></div>
+
+</div>
+

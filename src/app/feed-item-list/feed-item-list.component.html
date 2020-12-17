@@ -1,0 +1,12 @@
+<div class="feedCard-wrapper">
+
+  <div class="thumbnail" [style.backgroundImage]="'url('+feedItemData.thumbnail+')'"></div>
+
+  <p class="title">{{ feedItemData.title }}</p>
+
+  <div class="bottom-info">
+    <p class="author">{{ feedItemData.author }}</p>
+    <p class="date">{{ feedItemData.pubDate | date:'dd-MM-yyyy'}}</p>
+  </div>
+
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FeedService} from '../../services/feed.service';
 
 @Component({
   selector: 'app-feed-list',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed-list.component.scss']
 })
 export class FeedListComponent implements OnInit {
+  @Input() feedData;
 
-  constructor() { }
+  constructor(private feedService: FeedService) { }
 
   ngOnInit(): void {
   }
 
+  public async clickClose(event): Promise<any> {
+    event.stopPropagation();
+    const result = await this.feedService.deleteFeed(this.feedData.id);
+    this.feedService.onDataChange();
+  }
 }

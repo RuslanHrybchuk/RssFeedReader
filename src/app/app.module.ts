@@ -9,13 +9,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { FeedCardComponent } from './feed-card/feed-card.component';
 import { FeedListComponent } from './feed-list/feed-list.component';
 import { FeedService } from '../services/feed.service';
+import { FeedItemCardComponent } from './feed-item-card/feed-item-card.component';
+import { FeedItemListComponent } from './feed-item-list/feed-item-list.component';
+import { SafeHtmlPipe } from './pipes/safe-html-pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FeedCardComponent,
-    FeedListComponent
+    FeedListComponent,
+    FeedItemCardComponent,
+    FeedItemListComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
