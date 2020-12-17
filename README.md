@@ -9,7 +9,7 @@
 </ul>
 You can login using one of those mocked accounts:</br>
 <i>
-username/password
+<username/password>
 </i>
 </br>
 Bret/password</br>
